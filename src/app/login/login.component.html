@@ -1,0 +1,26 @@
+<!-- FORM MODULE, ese tipo de formulario declarativo ya no se emplea, 
+        se utiliza el REACTIVE FORM -->
+<div class="login-container">
+    <div class="login-card">
+        <h1>LOGIN</h1>
+        <div>
+            <form #f=ngForm (ngSubmit)="login(f.value)">
+                <div class="field-element">
+                    <label for="email">Email: </label>
+                    <!-- ngModel, actua como para valores de entrada como de salida -->
+                    <!-- permite ponerle valores inciales a los campos -->
+                    <!-- [] -- input ()-- output -->
+                    <input id="email" type="email" required name="email" [(ngModel)]="email">
+                </div>
+                <div class="field-element">
+                    <label for="password">Password: </label>
+                    <input id="password" type="password" required name="password" ngModel>
+                </div>
+                <p class="error" *ngIf="error">
+                    Usuario / contraseña incorrecta
+                </p>
+                <button class="btn primary" [disabled]="f.invalid">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

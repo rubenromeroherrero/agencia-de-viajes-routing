@@ -1,0 +1,13 @@
+<header>
+    <div>
+        <span [routerLink]="['']">Mi agencia de viajes</span>
+        <span [routerLink]="['/viajes']">Inicio</span>
+        <span [routerLink]="['/viajes/editar']">Crear Viaje</span>
+        <span [routerLink]="['/clientes']">Clientes</span>
+        <span [routerLink]="['/clientes/editar']">Crear Cliente</span>
+    </div>
+
+    <button>
+        <i title="Cerrar sesión" class="fas fa-sign-out-alt" (click)="cerrarSesionClick()"></i>
+    </button>
+</header>

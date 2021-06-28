@@ -1,0 +1,51 @@
+<!-- formGroup, es una directiva que requiere ser instalada como ReactiveForm en app routing module -->
+<form [formGroup]="clientesForm" (ngSubmit)="guardarClick(clientesForm)" [ngClass]="{submited: submitted}">
+    <fieldset>
+        <legend>
+            <h1> Edicion de Clientes</h1>
+        </legend>
+        <div class=" flex-row">
+            <div class="field-element">
+                <label for="">Nombre: </label>
+                <input id="" type="text" formControlName="nombre">
+            </div>
+            <div class="field-element">
+                <label for="">Apellidos: </label>
+                <input id="" type="text" formControlName="apellidos">
+            </div>
+            <div class="field-element">
+                <label for="">Email: </label>
+                <input id="" type="email" formControlName="email">
+            </div>
+            <div class="field-element">
+                <label for="">Dni: </label>
+                <input id="" type="text" formControlName="dni">
+            </div>
+            <div class="field-element">
+                <label for="">Teléfono: </label>
+                <input id="" type="tel" formControlName="telefono">
+            </div>
+            <div class="field-element">
+                <label for="">Estado Civil: </label>
+                <select id="" formControlName="estadoCivilId">
+                    <option value=""></option>
+                    <!-- <option [ngValue]="99"></option> -->
+                    <option *ngFor="let item of estadosCiviles" [ngValue]="item.id">{{item.descripcion}}</option>
+                </select>
+            </div>
+            <div class="field-element">
+                <label for="">Fecha de nacimiento: </label>
+                <input id="" type="date" formControlName="fechaNacimiento">
+            </div>
+            <div class="field-element">
+                <label for="">Dirección: </label>
+                <input id="" type="text" formControlName="direccion">
+            </div>
+
+        </div>
+    </fieldset>
+    <div class="row-buttons">
+        <button class="btn primary" type="submit">Guardar</button>
+        <button class="btn " type="button" (click)="resetForm()">Resetear</button>
+    </div>
+</form>
