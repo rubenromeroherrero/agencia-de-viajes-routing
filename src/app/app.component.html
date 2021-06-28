@@ -1,4 +1,6 @@
-<app-header (cerrarSesion)="cerrarSesion()"></app-header>
+<!-- si es true mostrará el header -->
+<app-header *ngIf="isUserLogged()" (cerrarSesion)="cerrarSesion()"></app-header>
+<!-- <app-header *ngIf="!elUsuarioEstaEnLogin" (cerrarSesion)="cerrarSesion()"></app-header> -->
 <div class="main">
     <router-outlet></router-outlet>
 </div>

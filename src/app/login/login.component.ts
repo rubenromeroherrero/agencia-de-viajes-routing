@@ -16,6 +16,10 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    // De esta manera controlamos que si el usuario pone en la url loggin una vez logeado, nos volvera a llevar a la página de inicio
+    if (this.authService.isUserAuthenticated) {
+      this.router.navigate(['']);
+    }
   }
 
   login(values: {email:string, password:string}): void {
