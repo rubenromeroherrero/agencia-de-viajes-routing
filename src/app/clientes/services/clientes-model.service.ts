@@ -1,7 +1,8 @@
-import { HttpClient, HttpResponse, HttpResponseBase, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { Cliente } from '../models/cliente';
 import { ClienteListItem } from '../models/cliente-list-item';
 import { IdValorClient } from './id-valor-client';
@@ -20,6 +21,7 @@ export class ClientesModelService {
   // ];
 
   url = 'http://localhost:3000'
+
 
   constructor(private http: HttpClient) { }
 
@@ -53,7 +55,7 @@ export class ClientesModelService {
   }
 
   save(cliente: Cliente): Observable<Cliente | null> {
-    console.log(cliente);
+    // console.log(cliente);
     if (!cliente) {
       // HACE QUE TE DEVUELLVA UN OBSERVABLE EL OF, de tipo null, porque no hay cliente
       return of(null);
@@ -71,7 +73,7 @@ export class ClientesModelService {
 
   delete(clienteId: string): Observable<boolean> {
     return clienteId
-      ? this.http.delete<HttpResponse<any>>(`${this.url}/clientes/${clienteId}`, { observe: 'response' }).pipe(
+      ? this.http.delete<HttpResponse<any>>(`${this.url}/clientes/${clienteId}`).pipe(
         map(res => res.status === HttpStatusCode.NoContent)
       )
       : of(false)

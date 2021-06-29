@@ -1,10 +1,11 @@
-import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Viaje } from '../models/viaje';
 import { IdValor } from './id-valor';
 import { map } from 'rxjs/operators';
 import { ViajesFilter } from '../models/viajes-filter';
+import { AuthService } from 'src/app/services/auth.service';
 
 export interface ViajeDelete {
   destroyedRow: number
@@ -31,14 +32,15 @@ export class ViajesModelService {
   private url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
+    
   }
 
   getViajes(): Observable<Viaje[]> {
 
+    // tenemos que añadir el objeto headers, para incluir el bearer en la respuesta
     return this.http.get<Viaje[]>(`${this.url}/viajes`).pipe(
       map(x => x.map(v => new Viaje(v)))
     );
-
   }
 
   getViajeById(id: string): Observable<Viaje> {
@@ -68,7 +70,6 @@ export class ViajesModelService {
   }
 
   eliminar(id: string): Observable<boolean | null> {
-
 
     if (id) {
       return this.http.delete<any>(`${this.url}/viajes/${id}`, { observe: 'response' }).pipe(

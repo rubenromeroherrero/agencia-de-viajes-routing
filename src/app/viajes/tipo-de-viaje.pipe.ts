@@ -21,6 +21,7 @@ export class TipoDeViajePipe implements PipeTransform {
 
   transform(tipoDeViajeId: number | null): string {
 
+    // console.log(tipoDeViajeId);
     if (!tipoDeViajeId){
       return '- - -';
     }

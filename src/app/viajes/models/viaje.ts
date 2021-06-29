@@ -28,7 +28,7 @@ export class Viaje {
     constructor(item?: any) {
         this.id = item?.id ?? '';
         this.nombre = item?.nombre ?? '';
-        this.tipoDeViajeId =(item?.tipoDeViajeId || item?.TipoDeViajeId) ?? null;
+        this.tipoDeViajeId =(item?.tipoDeViajeId || item?.TipoDeViajeId || item?.tiposDeViajeId) ?? null;
         this.duracion = item?.duracion ?? 0;
         this.destino = item?.destino ?? '';
         this.plazas = item?.plazas ?? 0;
